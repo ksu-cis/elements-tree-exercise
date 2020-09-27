@@ -32,7 +32,7 @@
         <Button Grid.Column="0" Grid.Row="3" Tag="1">1</Button>
         <Button Grid.Column="1" Grid.Row="3" Tag="2">2</Button>
         <Button Grid.Column="2" Grid.Row="3" Tag="3">3</Button>
-        <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Tag="0">0</Button>
+        <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">0</Button>
         <!-- operation buttons -->
         <Button Grid.Column="2" Grid.Row="4" Click="onClear">CLR</Button>
         <Button Grid.Column="3">=</Button>

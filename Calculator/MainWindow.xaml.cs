@@ -14,20 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Calculator
-{
-    /// <summary>
-    /// An enumeration representing the operations this 
-    /// calculator can employ
-    /// </summary>
-    enum Operation 
-    {
-        None = 0,
-        Add = 1, 
-        Subtract = 2,
-        Multiply = 3,
-        Divide = 4
-    }
-
+{    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -76,7 +63,7 @@ namespace Calculator
                 // or if we are supposed to overwrite the display
                 if (display.Text == "0" || nextKeyOverwrites)
                 {
-                    // If it does, replace the zero with the entered number
+                    // If it does, replace the current number with the entered digit
                     display.Text = button.Tag.ToString();
                     // and turn off the "nextKeyOverwrites"
                     nextKeyOverwrites = false;
@@ -113,8 +100,10 @@ namespace Calculator
                     // Clear the display 
                     display.Text = "0";
                 }
-                // And cache the new operation
+                // Cache the new operation
                 operation = (Operation)int.Parse(button.Tag.ToString());
+                // And set the next key to overwrite the current display
+                nextKeyOverwrites = true;
             }
         }
 
@@ -141,7 +130,7 @@ namespace Calculator
                     display.Text = (operands[0] / operands[1]).ToString();
                     break;
             }
-            // Clear the cached operand
+            // Clear the cached operation
             operation = Operation.None;
         }
     }
