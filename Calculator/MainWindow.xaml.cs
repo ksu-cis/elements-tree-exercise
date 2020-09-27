@@ -86,19 +86,19 @@ namespace Calculator
             if (sender is Button button)
             {
                 // Determine if we are already performing an operation
-                if (operation != Operation.None)
+                if (operation == Operation.None)
                 {
-                    // If we are, save the current display value as the second operand
-                    operands[1] = int.Parse(display.Text);
-                    // Apply the cached operation 
-                    applyOperation();
+                    // If not, cache the current display value as the first operand
+                    operands[0] = int.Parse(display.Text);
+                    // and then clear the display 
+                    display.Text = "0";                    
                 }
                 else
                 {
-                    // Otherwise, cache the current display value as the first operand
+                    // Otherwise, save the current display value as the second operand
                     operands[1] = int.Parse(display.Text);
-                    // Clear the display 
-                    display.Text = "0";
+                    // and then apply the cached operation 
+                    applyOperation();
                 }
                 // Cache the new operation
                 operation = (Operation)int.Parse(button.Tag.ToString());
